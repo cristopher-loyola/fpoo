@@ -13,36 +13,6 @@
 # tuple = numeros
 # print(tuple)
 
-def main():
-    numeros = (input("ingrese una lista de numeros: "))
-
-    while True:
-        print("\nSeleccione una opción:")
-        print("1. Sumatoria de los elementos de la lista")
-        print("2. Número mayor de la lista")
-        print("3. Número menor de la lista")
-        print("4. Promedio")
-        print("5. Moda")
-        print("6. Rango")
-        print("7. Salir")
-
-        opcion = input("Opción: ")
-
-        if opcion == '1':
-            print("Sumatoria de los elementos:", sum(numeros))
-        elif opcion == '2':
-            print("Número mayor:", max(numeros))
-        elif opcion == '3':
-            print("Número menor:", min(numeros))
-        elif opcion == '4':
-            print("Promedio:", sum(numeros) / len(numeros))
-        elif opcion == '6':
-            print("Rango:", max(numeros) - min(numeros))
-        elif opcion == '7':
-            print("Saliendo del programa...")
-            break
-        else:
-            print("Opción inválida. Por favor, seleccione una opción válida.")
-
-if __name__ == "":
-    main()
+numeros = input("ingrese una lista de numeros: ")
+list = numeros
+print(list)
