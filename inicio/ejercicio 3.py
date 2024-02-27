@@ -1,4 +1,4 @@
-try:
+Ptry:
     X = int(input("Ingrese un número entero X: "))
 except ValueError:
     print("Por favor, ingrese un número entero válido.")

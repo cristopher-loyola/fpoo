@@ -1,9 +1,10 @@
 class personaje:
     # Atributos del perosnaje de halo 
     
-    especie = "Humano"
-    nombre = "John"
-    altura = 2.18
+    def __init__(self,esp,nom,alt):
+        self.especie= esp
+        self.nombre= nom
+        self.altura= alt
     
     # Metodos del personaje de halo
     def correr(self,estado):
@@ -15,7 +16,7 @@ class personaje:
             #self para llamar los atributos de la clase
             
     def lanzarGranada(self):
-        print(self.nombre + "pego una granada")
+        print(self.nombre + " pego una granada")
         
         
   
