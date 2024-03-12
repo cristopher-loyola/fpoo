@@ -1,9 +1,13 @@
 import tkinter as tk
-import random
-import string
-from funciones import *
+
 from tkinter import Tk, Frame, Button, Label, messagebox, Entry
 import tkinter as tk
+
+def crear_matricula():
+    nombre = var1.get()
+    apellidop = var2.get()
+    
+
 
 Ventana = Tk()
 Ventana.title("password")
@@ -37,6 +41,9 @@ Entry(seccion1, takefocus=True, textvariable=var1).pack()
 var6 = tk.StringVar()
 Label(seccion1, text="año en curso: ", font=("Helvetica", 14)).pack()
 Entry(seccion1, takefocus=True, textvariable=var1).pack()
+
+
+generate_password_button = tk.Button(Ventana, text="Generar Contraseña", command=crear_matricula)
 
 
 
