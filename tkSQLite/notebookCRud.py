@@ -1,46 +1,37 @@
 from tkinter import *
 from tkinter import ttk
 import tkinter as tk
+from contolador import Controlador  # Corregido el nombre de la clase
 
-Ventana= Tk()
-Ventana.title("CRUD de Usuarios")
+
+objControlador = Controlador()  # Corregido el nombre de la clase
+
+def ejecutarInsert():
+    objControlador.insertUsuario(var1.get(), var2.get(), var3.get())
+
+Ventana = Tk()
+Ventana.title("CRUD de usuarios")
 Ventana.geometry("500x300")
 
-panel= ttk.Notebook(Ventana)
-panel.pack(fill='both', expand="yes")
+panel = ttk.Notebook(Ventana)
+panel.pack(fill='both', expand='yes')
 
-pestana1= ttk.Frame(panel)
-pestana2= ttk.Frame(panel)
-pestana3= ttk.Frame(panel)
-pestana4= ttk.Frame(panel)
-pestana5= ttk.Frame(panel)
+pestana1 = ttk.Frame(panel)
+panel.add(pestana1, text="Crear usuario")
 
+Label(pestana1, text="Registro de usuarios", fg="blue", font=("Modern", 18)).pack()
 
-
-panel.add(pestana1, text="Crear Usuario")
-panel.add(pestana2, text="Buscar Usuario")
-panel.add(pestana3, text="Consultar Usuarios")
-panel.add(pestana4, text="Edita Usuario")
-panel.add(pestana5, text="Eliminar Usuario")
-
-#pestaña 1:formulario de insert
-Label(pestana1, text="Registro de usuarios", fg="blue", font=("Modern",18)).pack()
-
-var1= tk.StringVar()
-Label(pestana1,text="nombre").pack()
+var1 = tk.StringVar()
+Label(pestana1, text="Nombre: ").pack()
 Entry(pestana1, textvariable=var1).pack()
 
-var2= tk.StringVar()
-Label(pestana1,text="correo: ").pack()
-Entry(pestana1, textvariable=var1).pack()
+var2 = tk.StringVar()
+Label(pestana1, text="Correo: ").pack()
+Entry(pestana1, textvariable=var2).pack()
 
-var3= tk.StringVar()
-Label(pestana1,text="contraseña: ").pack()
-Entry(pestana1, textvariable=var1).pack()
+var3 = tk.StringVar()
+Label(pestana1, text="Contraseña: ").pack()
+Entry(pestana1, textvariable=var3).pack()
 
-Button(pestana1,text="Guardae usuario").pack()
-
-
-
-
+Button(pestana1, text="Guardar usuario", command=ejecutarInsert).pack()
 Ventana.mainloop()
