@@ -15,7 +15,15 @@ def buscarUsuario():
     else:
         text_result.delete(1.0, END)
         text_result.insert(END, usuarioBD)
-
+def mostrarUsuarios():
+    usuarios = objControlador.mostrarTodosUsuarios()
+    texto_usuarios = ''
+    for usuario in usuarios:
+        texto_usuarios += f"ID: {usuario[0]}, Nombre{usuario[1]}, correo:{usuario[2]}, Contrasena:{usuario[3]}\n"
+    
+    
+    textRegistro.insert("end", texto_usuarios)
+        
 Ventana = Tk()
 Ventana.title("CRUD de usuarios")
 Ventana.geometry("500x300")
@@ -64,5 +72,10 @@ Button(pestana2, text="buscarUsuario", command=buscarUsuario).pack()
 Label(pestana2, text="Registrado: ", fg="blue", font=("Mono", 16)).pack()
 text_result = Text(pestana2, height=5, width=52)
 text_result.pack()
+
+Label(pestana3, text="Consultar usuarios", fg="blue", font=("Mono", 18)).pack()
+Button(pestana3, text="consultar", command=mostrarUsuarios).pack()
+textRegistro = tk.Text(pestana3, height=30, width=60)
+textRegistro.pack()
 
 Ventana.mainloop()

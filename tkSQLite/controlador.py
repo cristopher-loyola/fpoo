@@ -56,3 +56,16 @@ class controlador:
                     messagebox.showwarning("Nada", "Id no existe en BD")
             except sqlite3.OperationalError:
                 print("No se pudo ejecutar la búsqueda")
+    def mostrarTodosUsuarios(self):
+        conex = self.conexion()
+        cursor = conex.cursor()
+        try:
+            cursor.execute("select * from tbUsuarios")
+            usuarios = cursor.fetchall()
+            conex.close()
+            return usuarios
+        except sqlite3.OperationalError:
+            print("No existen registros aun")
+            conex.close()
+            return []
+    
