@@ -2,8 +2,9 @@ from tkinter import *
 from tkinter import ttk, messagebox
 import tkinter as tk
 from controlador import controlador
-
+from GeneradorPDF import*
 objControlador = controlador()
+objPDF = GeneradorPDF ()
 
 def ejecutarInsert():
     objControlador.insertUsuario(var1.get(), var2.get(), var3.get())
@@ -23,6 +24,17 @@ def mostrarUsuarios():
     
     
     textRegistro.insert("end", texto_usuarios)
+    
+def ejecutarPDf():
+        if varTitulo =="":
+            messagebox.showwarning("Importante, escribe un nombre")
+        else:
+            objPDF.add_page()
+            objPDF.chapter_body()
+            objPDF.output(varTitulo.get()+".pdf")
+            rutaPDF ="C/Users/USUARIO/Documents/github/fpoo/tkSQLite/GeneradorPDF.py"+varTitulo.get()+".pdf"
+            messagebox.showinfo("Archivo creado", "Pdf disponible")
+            os.system(f"start {rutaPDF}")
         
 Ventana = Tk()
 Ventana.title("CRUD de usuarios")
@@ -31,20 +43,19 @@ Ventana.geometry("500x300")
 panel = ttk.Notebook(Ventana)
 panel.pack(fill='both', expand='yes')
 
-#3 definir las pestañas del nootbook
 pestana1= ttk.Frame(panel)
 pestana2= ttk.Frame(panel)
 pestana3= ttk.Frame(panel)
 pestana4= ttk.Frame(panel)
 pestana5= ttk.Frame(panel)
+pestana6= ttk.Frame(panel)
 
-
-#4 agregamos las pestañas
 panel.add(pestana1,text="Crear usuario")
 panel.add(pestana2,text="Buscar usuario")
 panel.add(pestana3,text="Consultar usuario")
 panel.add(pestana4,text="Editar usuario")
 panel.add(pestana5,text="Eliminar usuario")
+panel.add(pestana6,text="Exportar en PDF")
 
 Label(pestana1, text="Registro de usuarios", fg="blue", font=("Modern", 18)).pack()
 
@@ -78,4 +89,11 @@ Button(pestana3, text="consultar", command=mostrarUsuarios).pack()
 textRegistro = tk.Text(pestana3, height=30, width=60)
 textRegistro.pack()
 
+#pestaña 6:Exportar pdf
+Label(pestana6, text="Usuarios en PDF", fg="blue", font=("Mono", 18)).pack()
+varTitulo= tk.StringVar()
+Label(pestana6, text="Escribe el codigo de tu usuario", fg="black", font=("Mono", 10)).pack()
+Entry(pestana6, textvariable=var1).pack()
+Button(pestana6, text="Crear PDF", command=ejecutarPDf).pack()
+textRegistro.pack()
 Ventana.mainloop()

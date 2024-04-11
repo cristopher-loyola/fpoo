@@ -3,6 +3,7 @@ from tkinter import messagebox, Text, Tk, ttk
 import sqlite3
 import bcrypt
 
+
 class controlador:
 
     def conexion(self):
